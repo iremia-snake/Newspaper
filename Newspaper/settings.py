@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@cp1jf@!d4z!4ik+kkdyl54mz!(8i1v^hcu2+r0p9udxngtwgi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://pravda-site-test.ru.tuna.am', 'https://tuna.am']
