@@ -1,0 +1,66 @@
+{% extends 'main/wrapper.html' %}
+{% load static %}
+{% block content %}
+    {% include 'main/messages.html' %}
+    <div class="row mb-3">
+         <div class="col-12 col-md-5 col-xl-4">
+             {% if profile.avatar %}
+                 <img src="{{ profile.avatar.url }}" class="img-fluid rounded-3" alt="...">
+             {% else %}
+                 <img src="{% static 'images/people_alt2.png' %}" class="img-fluid rounded-3"
+                      alt="аватар не установлен">
+             {% endif %}
+         </div>
+         <div class="col-12 col-sm-12 col-md-5 col-xl-8">
+             {% if profile.first_name or profile.last_name %}
+                 <p class="display-2">{{ profile.first_name }} {{ profile.last_name }}</p>
+             {% else %}
+                 <p class="display-2 fst-italic">{{ profile.username }}</p>
+             {% endif %}
+         </div>
+     </div>
+
+    <div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button"
+                        role="tab" aria-controls="home" aria-selected="true">Информация
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="articles-tab" data-bs-toggle="tab" data-bs-target="#articles" type="button"
+                        role="tab" aria-controls="profile" aria-selected="false">Статьи
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="other-tab" data-bs-toggle="tab" data-bs-target="#other" type="button"
+                        role="tab" aria-controls="contact" aria-selected="false">Другое
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="userTabContent">
+            <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+                <div class="row">
+                    <div class="col-12">
+                        <p>Город: {{ profile.city }}</p>
+                        <p>{{ profile.bio }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="articles" role="tabpanel" aria-labelledby="articles-tab">
+                Контент вкладки Статьи пользователя
+            </div>
+            <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+                Контент вкладки прочее
+            </div>
+        </div>
+    </div>
+
+    {% if profile == user %}
+    <div>
+        <a href="{% url 'profile_edit' %}" class="btn btn-outline-dark">Редактировать профиль</a>
+        <a href="{% url 'logout' %}" class="btn btn-outline-danger">Выйти</a>
+    </div>
+    {% endif %}
+{% endblock %}

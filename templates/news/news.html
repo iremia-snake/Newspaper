@@ -1,0 +1,42 @@
+{% extends 'main/wrapper.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}Статьи{% endblock %}
+{% block content %}
+        {% include 'main/messages.html' %}
+        <form action="" method="GET" class="">
+            <div class="form-group row justify-content-center">
+                <label class="col-sm-12 col-md-2 col-form-label">{{ search_form.search_query.label }}</label>
+                <div class="col-sm-11 col-md-6">
+                    {% render_field search_form.search_query id="search" class+="form-control" placeholder="поиск статей" %}
+                </div>
+                <button type="submit" class="btn btn-outline-dark w-auto"><i class="fa fa-search"></i></button>
+    {#            {{ filter_form }}#}
+            </div>
+            <p>Также будет фильтр по диапазону дат публикации (когда настрою daterangepicker)</p>
+        </form>
+        <h2 class="display-5 text-center font-monospace">Новости</h2>
+        <div class="row">
+        {% for i in news_list %}
+            <div class="col-12 col-md-6 col-lg-4 my-2 mx-auto">
+                <div class="card rounded-0 shadow-sm overflow-hidden">
+                    <a href="{% url 'show_article' i.id %}" class="d-block text-reset text-decoration-none">
+                        {% if i.image %}
+                            <img src="{{ i.image.url }}" class="card-img-top rounded-0" alt="...">
+                        {% else %}
+                            <div class="card-img-top rounded-0 bg-info-subtle" style="height: 160px">
+                                <p class="text-center text-muted text-black display-6" style="line-height: 160px">No Image</p>
+                            </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ i.title }}</h5>
+                            <p class="card-text">Автор: {{ i.author }}</p>
+                            <p class="card-text text-muted">{{ i.date }}</p>
+                            <!-- <a href="#" class="btn btn-primary">Кнопка</a> -->
+                            <a href="{% url 'edit_article' i.id %}">Редактировать</a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+{% endblock %}

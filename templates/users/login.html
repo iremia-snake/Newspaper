@@ -1,0 +1,26 @@
+{% extends 'main/wrapper.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="w-50 m-auto my-5">
+        <h2 class="text-center">Вход</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} {% if 'error' in message.tags %}alert-danger{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {% for i in form %}
+                <div class="form-group my-2">
+                    <label for="{{ i.id_for_label }}"> {{ i.label }}</label>
+                    {% render_field i class+="form-control" %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-success mt-2">Войти</button>
+        </form>
+
+        <p>Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+    </div>
+{% endblock %}

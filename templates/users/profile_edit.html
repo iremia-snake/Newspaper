@@ -1,0 +1,58 @@
+{% extends 'main/wrapper.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+{#        {% with avatar_field = form.avatar %}#}
+{#            {% if avatar_field.value %}#}
+{#            <div class="card mb-3">#}
+{#                <div class="card-body">#}
+{#                    <label class="form-label fw-bold">Фото профиля</label>#}
+{#                    <div class="d-flex align-items-center">#}
+{#                        <div class="flex-shrink-0">#}
+{#                            {% if avatar_field.value.url %}#}
+{#                                <img src="{{ avatar_field.value.url }}" class="rounded-circle" alt="аватар" width="80">#}
+{#                            {% endif %}#}
+{#                        </div>#}
+{#                        <div class="flex-grow-1 ms-3">#}
+{#                            <h6 class="card-subtitle mb-2 text-muted">Текущий файл:</h6>#}
+{#                            <p class="card-text">{{ avatar_field.value.name }}</p>#}
+{#                            <small class="text-muted">#}
+{#                                Загружен: {{ user.avatar_uploaded_at|default:"неизвестно" }}#}
+{#                            </small>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            {% endif %}#}
+{#        {% endwith %}#}
+
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Имя и Фамилия</span>
+            {% render_field form.first_name id="first_name" aria-label="First name" class+="form-control" %}
+            {% render_field form.last_name id="last_name" aria-label="Last name" class+="form-control" %}
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Почта</span>
+            {% render_field form.email id="email" aria-label="email" class+="form-control" %}
+        </div>
+
+
+        <div class="input-group mb-3">
+
+            <span class="input-group-text" id="basic-addon1">Аватар</span>
+{#            {{ form.avatar }}#}
+            {% render_field form.avatar id="avatar" aria-label="avatar" class+="form-control" %}
+        </div>
+
+
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">О себе</span>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-outline-success">Сохранить</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="text/css" rel="stylesheet" href="{% static 'bootstrap-5.3.8-dist/css/bootstrap.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block head %}
+    {% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+
+</head>
+<body class="bg-body-secondary">
+    <header class="shadow-sm bg-light-subtle border border-bottom pb-1">
+        <div class="container">
+            <nav class="row align-items-end justify-content-between">
+                <div class="col-auto">
+                    <a class="navbar-brand p-0" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="60" viewBox="0 0 305 80" fill="none"><path d="M0 0h305v80H0z"/><g id="logo_g" fill="#000" fill-rule="evenodd"><path d="M-.094 9.094V73h13.469V26.562h14.688V73h13.406V9.094H-.094zM81.864 9.12c2.622-.044 5.822-.089 8.177 1.333 5.555 3.333 7.822 9.688 7.244 15.91C96.22 38.006 85.553 46.228 75.154 50.05c-2.042.816-4.246 1.436-6.4 1.866V73.01H55.29V9.12h26.575zm-5.732 29.464c1.698-1.637 6.71-6.844 5.155-10.355-.578-1.372-1.748-1.644-3.111-1.644h-9.422V42.85c2.58-.926 5.378-2.339 7.378-4.266zM143.636 9.105V73.01h-13.465V53.678h-16.665c.044 6.71 1.689 12.888 3.688 19.332h-12.487s-3.6-9.6-4.222-23.51c-.133-2.799.178-8.487 1.644-14.664 2.889-11.955 10.532-25.731 10.755-25.731h30.752zm-13.465 35.64v-2.577h-14.976c-.223.845-.445 1.733-.667 2.578h15.643zm0-7.865V26.57h-8.355c-1.879 3.41-3.604 6.636-4.933 10.31h13.288zM179.012 9.105c3.777 0 7.777.31 9.688.977 6.132 2.133 7.643 7.555 7.377 13.777-.267 5.466-3.2 10.177-7.333 14.043 2.858 3.47 5.448 7.037 7.142 10.749 2.377 5.207 2.767 10.076.075 15.304-4.415 8.573-11.332 9.055-20.149 9.055H157.68V9.105h21.332zm.844 46.306c1.556-.177 2.622-1.91 2.711-3.333.222-2.977-3.289-5.688-5.111-6.755-2.041 1.02-4.199 1.84-6.355 2.578v7.6c2.907 0 5.857.186 8.755-.09zm-4.044-21.509c2.444-1.244 5.244-3.066 4.711-5.021-.536-1.877-3.18-1.52-4.711-1.6-1.822-.045-3.777 0-4.711 0v8.577c1.622-.54 3.171-1.216 4.711-1.956zM246.916 9.105V55.5h7.066v24.131H242.26c-1.588-6.357-7.338-11.067-14.186-11.067-6.849 0-12.598 4.71-14.187 11.067h-11.722v-24.13h6.399c-.133-2.934.711-15.333 2.178-21.465 2.755-11.422 7.377-23.82 7.955-24.931h28.219zM233.451 55.5V26.525h-7.066c-3.556 7.6-4.622 21.42-5.111 28.975h12.177zM303 9.105V73.01h-13.465V53.678H272.87c.044 6.71 1.688 12.888 3.688 19.332H264.07s-3.599-9.6-4.221-23.51c-.134-2.799.177-8.487 1.644-14.664 2.889-11.955 10.532-25.731 10.754-25.731H303zm-13.465 35.64v-2.577h-14.977c-.222.845-.444 1.733-.666 2.578h15.643zm0-7.865V26.57h-8.355c-1.879 3.41-3.604 6.636-4.933 10.31h13.288z"/></g></svg>
+                    </a>
+                </div>
+                <ul class="col-lg-12 d-block d-sm-block d-md-flex col-xl-auto justify-content-center nav nav-pills p-0 pt-1 order-2">
+                    {% url 'home' as url %}
+                    <li class="bg-body-tertiary border nav-item"><a href="{{ url }}" class="rounded-0 px-4 nav-link {% if request.path == url %}active bg-danger {% else %}text-danger{% endif %}">
+                        <i class="fa fa-home icon-width" aria-hidden="true"></i>
+                        Домашняя
+                    </a></li>
+                    {% url 'news' as url %}
+                    <li class="bg-body-tertiary border nav-item"><a href="{{ url }}" class="rounded-0 px-4 nav-link {% if request.path == url %}active bg-danger {% else %}text-danger{% endif %}">
+                        <i class="fa fa-file icon-width" aria-hidden="true"></i>
+                        Статьи
+                    </a></li>
+                    {% url 'newspaper' as url %}
+                    <li class="bg-body-tertiary border nav-item"><a href="{{ url }}" class="rounded-0 px-4 nav-link {% if request.path == url %}active bg-danger {% else %}text-danger{% endif %}">
+                        <i class="fa fa-newspaper-o icon-width" aria-hidden="true"></i>
+                        Газета
+                    </a></li>
+                    {% url '#' as url %}
+                    <li class="bg-body-tertiary border nav-item"><a href="{{ url }}" class="rounded-0 px-4 nav-link {% if request.path == url %}active bg-danger {% else %}text-danger{% endif %}">
+                        <i class="fa fa-fire icon-width" aria-hidden="true"></i>
+                        Обсуждаемое
+                    </a></li>
+                    {% url 'about' as url %}
+                    <li class="bg-body-tertiary border nav-item"><a href="{{ url }}" class="rounded-0 px-4 nav-link {% if request.path == url %}active bg-danger {% else %}text-danger{% endif %}">
+                        <i class="fa fa-info icon-width" aria-hidden="true"></i>
+                        О нас
+                    </a></li>
+                {% if user and user.is_staff %}
+                    <li class="bg-body-tertiary border nav-item"><a href="/admin/" class="rounded-0 px-4 nav-link text-danger">
+                        <i class="fa fa-wrench icon-width" aria-hidden="true"></i>
+                        Админ-панель
+                    </a></li>
+                {% endif %}
+                </ul>
+                <div class="border border-white dropdown col-auto col-xl-auto order-0 order-xl-3 m-1 mx-2">
+                    <a href="#" class="d-block text-right" id="dropdownUser"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{% if user and user.is_authenticated and user.avatar %}
+                            {{ user.avatar.url }}
+                        {% else %}
+                            {% static 'images/Book.png' %}
+                        {% endif %}" alt="mdo" width="40" height="40" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small shadow-sm" aria-labelledby="dropdownUser">
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">Профиль</a></li>
+                        <li><a class="dropdown-item switch-theme-button" href="#" id="btnSwitch">Тема
+                        </a></li>
+                        {% if user and user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'add_article' %}">Создать статью</a></li>
+                        {% endif %}
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">Выход</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="bg-body shadow-sm container py-3 my-3 mt-4 position-relative">
+{#    <button type="button" onclick="window.history.back()" class="btn bg-body btn-outline-danger rounded-circle d-none d-md-block" style="position: absolute; top: -20px; left: -20px;"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>#}
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="py-3 bg-body shadow-sm">
+        <p class="text-muted text-center">Просто футер из примера</p>
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2">Главная</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">Функции</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">Цены</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">Часто задаваемые вопросы</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">О нас</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
+    </footer>
+</body></html>

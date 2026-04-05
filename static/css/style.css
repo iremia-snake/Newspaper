@@ -1,0 +1,27 @@
+:root{
+    --molten-lava: #780000ff;
+    --brick-red: #c1121fff;
+    --papaya-whip: #fdf0d5ff;
+    --deep-space-blue: #003049ff;
+    --steel-blue: #669bbcff;
+}
+
+.icon-width{
+    width: 1em;
+    text-align: center;
+}
+main{
+    overflow-wrap: break-word;
+}
+table{
+    display: block;
+    position: relative;
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+    /*border: 1px solid grey;*/
+}
+td, th{
+    border: 1px solid grey;
+    padding: 0 .5rem;
+}
